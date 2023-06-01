@@ -9,10 +9,10 @@
 
 <div class="row">
     <div *ngFor="let o of oszlopok" class="col">       
-        <input type="text" [(ngModel)]="ujAllat[o]" class="form-control">
+        <input [id]="'create'+o" type="text" [(ngModel)]="ujAllat[o]" class="form-control">
     </div>
     <div class="col">     
-        <button type="button" class="btn btn-warning">Add</button>
+        <button id="createbutton" (click)="addAnimal()" type="button" class="btn btn-warning">Add</button>
     </div>
 </div>
 
@@ -21,15 +21,15 @@
   
     <div *ngFor="let o of oszlopok" class="col">
         <!-- {{allat[o]}} -->
-        <input type="text" [(ngModel)]="allat[o]" class="form-control">
+        <input [id]="allat.nev+o" type="text" [(ngModel)]="allat[o]" class="form-control">
     </div>
     <div class="col">
         <div class="row">
             <div class="col-6">
-                <button type="button" class="btn btn-warning">Edit</button>
+                <button (click)="updateAnimal(allat)" [id]="allat.nev+'edit'" type="button" class="btn btn-warning">Edit</button>
             </div>
             <div class="col-6">
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button (click)="deleteAnimal(allat)" [id]="allat.nev+'delete'" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </div>
